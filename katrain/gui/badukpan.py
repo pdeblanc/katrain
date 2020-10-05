@@ -466,6 +466,17 @@ class BadukPanWidget(Widget):
                                 font_size=self.grid_size * sizefac / 2.5,
                                 font_name="Roboto",
                             )
+                        elif self.trainer_config.get("text_abs_points") and text_on:
+                            value = 12.6 - move_dict.get("pointsLost")  # TODO
+                            label_text = f"{value:.1f}"
+                            sizefac = 1
+                            Color(*BLACK)
+                            draw_text(
+                                pos=(self.gridpos_x[move.coords[0]], self.gridpos_y[move.coords[1]]),
+                                text=label_text,
+                                font_size=self.grid_size * sizefac / 2.5,
+                                font_name="Roboto",
+                            )
 
                         if engine_best_move:
                             top_move_coords = move.coords
