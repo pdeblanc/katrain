@@ -454,10 +454,10 @@ class BadukPanWidget(Widget):
                             source="img/topmove.png",
                         )
                         if self.trainer_config["text_point_loss"] and text_on:
-                            if move_dict["pointsLost"] < 0.05:
+                            if move_dict["pointsLost"] < 0.005:
                                 ptloss_text = "0.0"
                             else:
-                                ptloss_text = f"{-move_dict['pointsLost']:+.1f}"
+                                ptloss_text = f"{-move_dict['pointsLost']:+.2f}".replace("-0.", "-.")
                             sizefac = 1
                             Color(*BLACK)
                             draw_text(
