@@ -24,6 +24,7 @@ class GameNode(SGFNode):
         self.analysis_visits_requested = 0
         self.undo_threshold = random.random()  # for fractional undos
         self.end_state = None
+        self.pass_value = None
 
     def sgf_properties(self, save_comments_player=None, save_comments_class=None, eval_thresholds=None):
         properties = copy.copy(super().sgf_properties())
@@ -88,6 +89,17 @@ class GameNode(SGFNode):
             next_move=refine_move,
             find_alternatives=find_alternatives,
         )
+        engine.request_analysis(
+            self,
+            lambda result: self.set_reverse_analysis(result, refine_move, find_alternatives),
+            priority=priority,
+            visits=None,
+            analyze_fast=analyze_fast,
+            time_limit=True,
+            next_move=None,
+            find_alternatives=False,
+            reverse_color=True,
+        )
 
     def update_move_analysis(self, move_analysis, move_gtp):
         cur = self.analysis["moves"].get(move_gtp)
@@ -101,6 +113,9 @@ class GameNode(SGFNode):
             cur["order"] = min(cur["order"], move_analysis.get("order", 999))  # parent arriving after child
             if cur["visits"] < move_analysis["visits"]:
                 cur.update(move_analysis)
+
+    def set_reverse_analysis(self, analysis_json: Dict, refine_move: Optional[Move], alternatives_mode: bool):
+        self.pass_value = analysis_json["rootInfo"]["scoreLead"]
 
     def set_analysis(self, analysis_json: Dict, refine_move: Optional[Move], alternatives_mode: bool):
         if refine_move:

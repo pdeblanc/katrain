@@ -466,8 +466,10 @@ class BadukPanWidget(Widget):
                                 font_size=self.grid_size * sizefac / 2.5,
                                 font_name="Roboto",
                             )
-                        elif self.trainer_config.get("text_abs_points") and text_on:
-                            value = 12.6 - move_dict.get("pointsLost")  # TODO
+                        elif self.trainer_config.get("text_abs_points") and text_on and current_node.pass_value is not None:
+                            pass_value = current_node.pass_value
+                            value = move_dict["scoreLead"] - pass_value
+                            value *= current_node.player_sign(current_node.next_player)
                             label_text = f"{value:.1f}"
                             sizefac = 1
                             Color(*BLACK)

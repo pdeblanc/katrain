@@ -240,6 +240,7 @@ class KataGoEngine:
         ownership: Optional[bool] = None,
         next_move: Optional[GameNode] = None,
         extra_settings: Optional[Dict] = None,
+        reverse_color: bool = False
     ):
         nodes = analysis_node.nodes_from_root
         moves = [m for node in nodes for m in node.moves]
@@ -271,21 +272,41 @@ class KataGoEngine:
         if self.config.get("wide_root_noise", 0.0) > 0.0:  # don't send if 0.0, so older versions don't error
             settings["wideRootNoise"] = self.config["wide_root_noise"]
 
-        query = {
-            "rules": self.get_rules(analysis_node),
-            "priority": self.base_priority + priority,
-            "analyzeTurns": [len(moves)],
-            "maxVisits": visits,
-            "komi": analysis_node.komi,
-            "avoidMoves": avoid,
-            "boardXSize": size_x,
-            "boardYSize": size_y,
-            "includeOwnership": ownership and not next_move,
-            "includePolicy": not next_move,
-            "initialStones": [[m.player, m.gtp()] for m in initial_stones],
-            "initialPlayer": analysis_node.root.next_player,
-            "moves": [[m.player, m.gtp()] for m in moves],
-            "overrideSettings": {**settings, **(extra_settings or {})},
-        }
-        self.send_query(query, callback, error_callback, next_move)
-        analysis_node.analysis_visits_requested = max(analysis_node.analysis_visits_requested, visits)
+        if reverse_color:
+            query = {
+                "rules": self.get_rules(analysis_node),
+                "priority": self.base_priority + priority,
+                "analyzeTurns": [len(moves) + 1],
+                "maxVisits": visits,
+                "komi": analysis_node.komi,
+                "avoidMoves": avoid,
+                "boardXSize": size_x,
+                "boardYSize": size_y,
+                "includeOwnership": ownership and not next_move,
+                "includePolicy": not next_move,
+                "initialStones": [[m.player, m.gtp()] for m in initial_stones],
+                "initialPlayer": analysis_node.root.next_player,
+                "moves": [[m.player, m.gtp()] for m in moves] + [[analysis_node.next_player, "pass"]],
+                "overrideSettings": {**settings, **(extra_settings or {})},
+            }
+            self.send_query(query, callback, error_callback, next_move)
+            analysis_node.analysis_visits_requested = max(analysis_node.analysis_visits_requested, visits)
+        else:
+            query = {
+                "rules": self.get_rules(analysis_node),
+                "priority": self.base_priority + priority,
+                "analyzeTurns": [len(moves)],
+                "maxVisits": visits,
+                "komi": analysis_node.komi,
+                "avoidMoves": avoid,
+                "boardXSize": size_x,
+                "boardYSize": size_y,
+                "includeOwnership": ownership and not next_move,
+                "includePolicy": not next_move,
+                "initialStones": [[m.player, m.gtp()] for m in initial_stones],
+                "initialPlayer": analysis_node.root.next_player,
+                "moves": [[m.player, m.gtp()] for m in moves],
+                "overrideSettings": {**settings, **(extra_settings or {})},
+            }
+            self.send_query(query, callback, error_callback, next_move)
+            analysis_node.analysis_visits_requested = max(analysis_node.analysis_visits_requested, visits)
