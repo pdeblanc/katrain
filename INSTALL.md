@@ -30,24 +30,7 @@ brew install python3
 brew install katago
 pip3 install katrain
 ```
-
-If you are using a M1 Mac, at the point of writing, the latest stable release of Kivy (2.0) does not support the new architecture, so we have to use a development snapshot and build it from source:
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-brew install python3
-brew install katago
-
-# install dependencies: https://kivy.org/doc/stable/installation/installation-osx.html#install-source-osx
-brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer ffmpeg
-
-# install Kivy from source: https://kivy.org/doc/stable/gettingstarted/installation.html#kivy-source-install
-pip3 install "kivy[base] @ https://github.com/kivy/kivy/archive/master.zip" --no-binary kivy
-
-pip3 install katrain
-```
-
-Now you can start KaTrain by simply typing `katrain` in a terminal.
+Now you can start KaTrain by simply typing `katrain` in a terminal after adding it to your path.
 
 These commands install [Homebrew](https://brew.sh), which simplifies installing packages,
  followed by the programming language Python, the KataGo AI, and KaTrain itself.
@@ -71,7 +54,7 @@ Simply download and run, everything is included.
 ### <a name="WindowsSources"></a>Installation from sources
 
 * Download the repository by clicking the green *Clone or download* on this page and *Download zip*. Extract the contents.
-* Make sure you have a python installation, I will assume Anaconda (Python 3.7/3.8), available [here](https://www.anaconda.com/products/individual#download-section).
+* Make sure you have a python installation, I will assume Anaconda (Python 3.9 or later), available [here](https://www.anaconda.com/products/individual#download-section).
 * Open 'Anaconda prompt' from the start menu and navigate to where you extracted the zip file using the `cd <folder>` command.
 * Execute the command `pip3 install .`
 * Start the app by running `katrain` in the command prompt. 
@@ -80,16 +63,16 @@ Simply download and run, everything is included.
 
 ### <a name="LinuxQuick"></a>Quick install guide
 
-If you have a working Python 3.6-3.8 available, you should be able to simply:
+If you have a working Python 3.9 or later available, you should be able to simply:
 
-* Run `pip3 install -U katrain`
+* Run `pip3 install -U katrain` to install or upgrade.
 * Run the program by executing `katrain` in a terminal.
 
 ### <a name="LinuxSources"></a>Installation from sources 
 
 This section describes how to install KaTrain from sources,
  in case you want to run it in a local directory or have more control over the process. 
-It assumes you have a working Python 3.6+ installation.
+It assumes you have a working Python 3.9+ installation.
 
 * Open a terminal.
 * Run the command `git clone https://github.com/sanderland/katrain.git` to download the repository and 
@@ -97,7 +80,7 @@ It assumes you have a working Python 3.6+ installation.
 * Run the command `pip3 install .` to install the package globally, or use `--user` to install locally.
 * Run the program by typing `katrain` in the terminal.
     * If you prefer not to install, run without installing using `python3 -m katrain` after installing the 
-    dependencies from `requirements.txt`.
+    dependencies from `poetry.lock` with `poetry install`.
 
 A binary for KataGo is included, but if you have compiled your own, press F8 to open general settings and change the 
  KataGo executable path to the relevant KataGo v1.4+ binary.
@@ -118,7 +101,8 @@ sudo apt-get install python3-pip build-essential git python3 python3-dev ffmpeg 
 ```
 Then, try installing python package dependencies using:
 ```bash
-pip3 install -r requirements.txt
+pip3 install poetry
+poetry install
 pip3 install screeninfo # Skip on MacOS, not working
 ```
 In case the sound is not working, or there is no available wheel for your OS or Python version, try building kivy locally using:

@@ -744,18 +744,18 @@ msgstr "Cache-Analyse in SGF"
 msgid "menu:save-as"
 msgstr "Spiel speichern als..."
 
-#. Laden
 # sgf load button
+#. Laden
 msgid "Load File"
 msgstr "Spiel laden"
 
-#. Save SGF (Popup)
 # sgf save popup
+#. Save SGF (Popup)
 msgid "save sgf title"
 msgstr "SGF-Datei speichern"
 
-#. Save button
 # sgf save button
+#. Save button
 msgid "Save File"
 msgstr "Datei speichern"
 
@@ -1014,3 +1014,24 @@ msgstr "Ko allowed?"
 #. TODO - Menu option for tsumego frame around position
 msgid "analysis:tsumegoframe"
 msgstr "Tsumego Frame"
+
+#. TODO
+msgid "from move"
+msgstr "from move"
+
+#. TODO - status message
+msgid "move range analysis"
+msgstr ""
+"Re-analyzing moves from {start_move} to {end_move} using {visits} visits"
+
+#. TODO
+msgid "to move"
+msgstr "to move"
+
+#. TODO - Restrict analysis to move range
+msgid "limit to moves"
+msgstr "Limit to moves"
+
+#. TODO
+msgid "contribute:passwordwarning"
+msgstr "(Stored as plain text, do not re-use this anywhere)"

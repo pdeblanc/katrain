@@ -468,34 +468,30 @@ class BaseConfigPopup(QuickConfigGui):
         "Strongest distributed model": "https://katagotraining.org/api/networks/get_strongest/",
     }
     MODELS = {
-        "20 block model": "https://github.com/lightvector/KataGo/releases/download/v1.4.5/g170e-b20c256x2-s5303129600-d1228401921.bin.gz",
-        "30 block model": "https://github.com/lightvector/KataGo/releases/download/v1.4.5/g170-b30c320x2-s4824661760-d1229536699.bin.gz",
-        "40 block model": "https://github.com/lightvector/KataGo/releases/download/v1.4.5/g170-b40c256x2-s5095420928-d1229425124.bin.gz",
+        "old 15 block model": "https://github.com/lightvector/KataGo/releases/download/v1.3.2/g170e-b15c192-s1672170752-d466197061.txt.gz",
     }
     MODEL_DESC = {
         "Fat 40 block model": "https://d3dndmfyhecmj0.cloudfront.net/g170/neuralnets/g170e-b40c384x2-s2348692992-d1229892979.zip",
-        "15 block model": "https://d3dndmfyhecmj0.cloudfront.net/g170/neuralnets/g170e-b15c192-s1672170752-d466197061.bin.gz",
+        "Recommended 18b model": "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s9996604416-d4316597426.bin.gz",
+        "old 20 block model": "https://github.com/lightvector/KataGo/releases/download/v1.4.5/g170e-b20c256x2-s5303129600-d1228401921.bin.gz",
+        "old 30 block model": "https://github.com/lightvector/KataGo/releases/download/v1.4.5/g170-b30c320x2-s4824661760-d1229536699.bin.gz",
+        "old 40 block model": "https://github.com/lightvector/KataGo/releases/download/v1.4.5/g170-b40c256x2-s5095420928-d1229425124.bin.gz",
     }
 
     KATAGOS = {
         "win": {
-            "OpenCL v1.11.0": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-opencl-windows-x64.zip",
-            "Eigen AVX2 (Modern CPUs) v1.11.0": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-eigenavx2-windows-x64.zip",
-            "Eigen (CPU, Non-optimized) v1.11.0": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-eigen-windows-x64.zip",
-            "OpenCL v1.11.0 (bigger boards)": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-opencl-windows-x64+bs29.zip",
+            "OpenCL v1.15.3": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-opencl-windows-x64.zip",
+            "Eigen AVX2 (Modern CPUs) v1.15.3": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-eigenavx2-windows-x64.zip",
+            "Eigen (CPU, Non-optimized) v1.15.3": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-eigen-windows-x64.zip",
+            "OpenCL v1.15.3 (bigger boards)": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-opencl-windows-x64+bs29.zip",
         },
         "linux": {
-            "OpenCL v1.11.0": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-opencl-linux-x64.zip",
-            "Eigen AVX2 (Modern CPUs) v1.11.0": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-eigenavx2-linux-x64.zip",
-            "Eigen (CPU, Non-optimized) v1.11.0": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-eigen-linux-x64.zip",
-            "OpenCL v1.11.0 (bigger boards)": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-opencl-linux-x64+bs29.zip",
+            "OpenCL v1.15.3": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-opencl-linux-x64.zip",
+            "Eigen AVX2 (Modern CPUs) v1.15.3": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-eigenavx2-linux-x64.zip",
+            "Eigen (CPU, Non-optimized) v1.15.3": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-eigen-linux-x64.zip",            
+            "OpenCL v1.15.3 (bigger boards)": "https://github.com/lightvector/KataGo/releases/download/v1.15.3/katago-v1.15.3-opencl-linux-x64+bs29.zip",
         },
-        "just-descriptions": {
-            "CUDA v1.11.0 (Windows)": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-cuda11.2-windows-x64.zip",
-            "CUDA v1.11.0 (Linux)": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-cuda11.1-linux-x64.zip",
-            "Cuda/TensorRT v1.11.0 (Windows)": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-trt8.2-cuda11.2-windows-x64.zip",
-            "Cuda/TensorRT v1.11.0 (Linux)": "https://github.com/lightvector/KataGo/releases/download/v1.11.0/katago-v1.11.0-trt8.2-cuda11.1-linux-x64.zip",
-        },
+        "just-descriptions": {},
     }
 
     def __init__(self, katrain):
@@ -548,7 +544,7 @@ class BaseConfigPopup(QuickConfigGui):
         # no description to bottom
         model_files = sorted(
             [(find_description(path), path) for path in model_files],
-            key=lambda descpath: "Z" * 10 + path if descpath[0] == descpath[1] else descpath[0],
+            key=lambda descpath: ("Recommended" not in descpath[0], "  -  " not in descpath[0], descpath[0]),
         )
         models_available_msg = i18n._("models available").format(num=len(model_files))
         self.model_files.values = [models_available_msg] + [desc for desc, path in model_files]
@@ -839,8 +835,26 @@ class SaveSGFPopup(BoxLayout):
 
 
 class ReAnalyzeGamePopup(BoxLayout):
-    katrain = ObjectProperty(None)
     popup = ObjectProperty(None)
+
+    def on_checkbox_active(self, checkbox, value):
+        self.start_move.opacity = 1.0 if value else 0.3
+        self.end_move.opacity = 1.0 if value else 0.3
+        self.start_move.disabled = not value
+        self.end_move.disabled = not value
+
+    def __init__(self, katrain, **kwargs):
+        super().__init__(**kwargs)
+
+        self.katrain = katrain
+        self.move_range.bind(active=self.on_checkbox_active)
+
+        self.start_move.disabled = True
+        self.end_move.disabled = True
+        self.start_move.opacity = 0.3
+        self.end_move.opacity = 0.3
+
+        self.start_move.text = str(katrain.game.current_node.depth)
 
     def on_submit(self):
         self.button.trigger_action(duration=0)
@@ -884,21 +898,23 @@ class GameReportPopup(BoxLayout):
         for i, (label, fmt, stat, scale, more_is_better) in enumerate(
             [
                 ("accuracy", "{:.1f}", "accuracy", 100, True),
-                ("meanpointloss", "{:.1f}", "mean_ptloss", 5, False),
+                ("meanpointloss", "{:.2f}", "mean_ptloss", 5, False),
                 ("aitopmove", "{:.1%}", "ai_top_move", 1, True),
                 ("aitop5", "{:.1%}", "ai_top5_move", 1, True),
             ]
         ):
-
             statcell = {
                 bw: TableStatLabel(
                     text=fmt.format(sum_stats[bw][stat]) if stat in sum_stats[bw] else "",
                     side=side,
                     value=sum_stats[bw].get(stat, 0),
                     scale=scale,
-                    bar_color=Theme.STAT_BETTER_COLOR
-                    if (sum_stats[bw].get(stat, 0) < sum_stats[Move.opponent_player(bw)].get(stat, 0)) ^ more_is_better
-                    else Theme.STAT_WORSE_COLOR,
+                    bar_color=(
+                        Theme.STAT_BETTER_COLOR
+                        if (sum_stats[bw].get(stat, 0) < sum_stats[Move.opponent_player(bw)].get(stat, 0))
+                        ^ more_is_better
+                        else Theme.STAT_WORSE_COLOR
+                    ),
                     background_color=Theme.BOX_BACKGROUND_COLOR,
                 )
                 for (bw, side) in zip("BW", ["left", "right"])

@@ -373,6 +373,8 @@ class SGFNode:
 
     def place_handicap_stones(self, n_handicaps, tygem=False):
         board_size_x, board_size_y = self.board_size
+        if min(board_size_x, board_size_y) < 3:
+            return  # No
         near_x = 3 if board_size_x >= 13 else min(2, board_size_x - 1)
         near_y = 3 if board_size_y >= 13 else min(2, board_size_y - 1)
         far_x = board_size_x - 1 - near_x
@@ -574,7 +576,10 @@ class SGF:
 
                         key = line[4]
                         raw_move = line[5:7].lower()
-                        value = chr(ord(raw_move[0]) - 1) + chr(ord(raw_move[1]) - 1)
+                        if raw_move == "aa":
+                            value = ""  # pass
+                        else:
+                            value = chr(ord(raw_move[0]) - 1) + chr(ord(raw_move[1]) - 1)
 
                         node = cls._NODE_CLASS(parent=node)
                         node.set_property(key, value)

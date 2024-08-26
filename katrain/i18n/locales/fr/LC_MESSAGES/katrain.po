@@ -984,3 +984,23 @@ msgstr "Permettre les kos"
 
 msgid "analysis:tsumegoframe"
 msgstr "Composer un problème"
+
+#. Restrict analysis to move range
+msgid "limit to moves"
+msgstr "Limiter aux coups"
+
+msgid "from move"
+msgstr "du coup"
+
+msgid "to move"
+msgstr "au coup"
+
+#. status message
+msgid "move range analysis"
+msgstr ""
+"Analyse de partie approfondie du coup {start_move} au coup {end_move} "
+"({visits} visites/coup)."
+
+#. TODO
+msgid "contribute:passwordwarning"
+msgstr "(Stored as plain text, do not re-use this anywhere)"

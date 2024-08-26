@@ -72,7 +72,7 @@ class KataGoContributeEngine(BaseEngine):
         self.max_buffer_games = 2 * settings_dict["maxSimultaneousGames"]
         settings = {f"{k}={v}" for k, v in settings_dict.items()}
         self.command = shlex.split(
-            f'"{exe}" contribute -config "{cfg}" -base-dir "{base_dir}" -override-config "{",".join(settings)}"'
+            f'"{exe}" contribute -config "{cfg}" -base-dir "{base_dir}" -override-config {shlex.quote(",".join(settings))}'
         )
         self.start()
 
@@ -136,7 +136,6 @@ class KataGoContributeEngine(BaseEngine):
 
     def queries_remaining(self):
         return 1
-
 
     def start(self):
         try:

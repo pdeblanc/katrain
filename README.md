@@ -4,7 +4,6 @@
 [![License:MIT](http://img.shields.io/pypi/l/katrain)](http://en.wikipedia.org/wiki/MIT_License)
 [![GitHub Downloads](http://img.shields.io/github/downloads/sanderland/katrain/total?color=%23336699&label=github%20downloads)](http://github.com/sanderland/katrain/releases)
 [![PyPI Downloads](http://pepy.tech/badge/katrain)](http://pepy.tech/project/katrain)
-[![Github sponsors](http://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub&color=dcb424&link=http://github.com/sponsors/sanderland/)](http://github.com/sponsors/sanderland)
 [![Discord](http://img.shields.io/discord/417022162348802048?logo=discord)](http://discord.com/channels/417022162348802048/629446365688365067)
 
 KaTrain is a tool for analyzing games and playing go with AI feedback from KataGo:
@@ -68,12 +67,14 @@ KaTrain is a tool for analyzing games and playing go with AI feedback from KataG
 
 ## <a name="kata"></a>  Configuring KataGo
 
-KaTrain comes pre-packaged with a working KataGo (OpenCL version) for Windows, Linux, and pre-M1 Mac operating systems, and the 15 block model.
+KaTrain comes pre-packaged with a working KataGo (OpenCL version) for Windows, Linux, and pre-M1 Mac operating systems, and the rather old 15 block model.
 
 To change the model, open 'General and Engine settings' in the application and 'Download models'. You can then select the model you want from the dropdown menu.
 
 To change the katago binary, e.g. to the Eigen/CPU version if you don't have a GPU, click 'Download KataGo versions'.
   You can then select the KataGo binary from the dropdown menu.
+There are also CUDA and TensorRT versions available on [the KataGo release site](https://github.com/lightvector/KataGo/releases). Particularly the latter may offer much better performance on NVIDIA GPUs, but will be harder to 
+set up: [see here for more details](https://github.com/lightvector/KataGo#opencl-vs-cuda-vs-tensorrt-vs-eigen).
 
 Finally, you can override the entire command used to start the analysis engine, which 
  can be useful for connecting to a remote server. Do keep in mind that KaTrain uses the *analysis engine*
@@ -146,8 +147,8 @@ Keyboard shortcuts are shown with **[key]**.
 * The checkboxes at the top of the screen:
     * **[q]**: Child moves are shown. On by default, can turn it off to avoid obscuring other information or when 
                wanting to guess the next move.
-    * **[w]**: Show all dots: Cycles through showing all evaluation dots, showing the last few, and showing none.
-       * You can configure whether they are shown for AIs under 'Teaching/Analysis Settings'.
+    * **[w]**: Show all dots: Toggles showing coloured evaluation 'dots' on the last few moves or not.
+       * You can configure the thresholds, along with how many of the last moves they are shown for under 'Teaching/Analysis Settings'.
     * **[e]**: Top moves: Show the next moves KataGo considered, colored by their expected point loss. 
            Small/faint dots indicate high uncertainty and never show text (lower than your 'fast visits' setting). 
            Hover over any of them to see the principal variation.
@@ -167,6 +168,7 @@ Keyboard shortcuts are shown with **[key]**.
     * **[i]**: Start insertion mode. Allows you to insert moves, to improve analysis when both players ignore an important exchange or life and death situation. Press again to stop inserting and copy the rest of the branch.
     * **[l]**: Play out the game until the end and add as a collapsed branch, to visualize the potential effect of mistakes. This is done in the background, and can be started at several nodes at once when comparing the results at different starting positions.      
     * **[spacebar]**: Turn continuous analysis on/off. This will continuously improve analysis of the current position, similar to Lizzie's 'pondering', but only when there are no other queries going on.
+      * **[shift+spacebar]**: As above, but does not turn 'top moves' hints on when it is off.
     * **[enter]** AI move. Makes the AI move for the current player regardless of current player selection.
     * **[F2]**: Deeper full game analysis. Analyze the entire game to a higher number of visits.
     * **[F3]**: Performance report. Show an overview of performance statistics for both players.  
@@ -181,6 +183,7 @@ In addition to shortcuts mentioned above and those shown in the main menu:
 * **[~]** or **[ ` ]** or **[F12]**: Cycles through more minimalistic UI modes.
 * **[k]**: Toggle display of board coordinates.
 * **[p]**: Pass
+* **[m]**: Toggle the move number on the board
 * **[pause]**: Pause/Resume timer
 * **[arrow left]** or **[z]**: Undo move. Hold shift for 10 moves at a time, or ctrl to skip to the start.
 * **[arrow right]** or **[x]**: Redo move. Hold shift for 10 moves at a time, or ctrl to skip to the end.
@@ -245,7 +248,7 @@ See [these instructions](THEMES.md) for how to modify the look of any graphics o
 
  * Ideas, feedback, and contributions to code or translations are all very welcome.
     * For suggestions and planned improvements, see [open issues](http://github.com/sanderland/katrain/issues) on github to check if the functionality is already planned.
-* You can contact me on the [Leela Zero & Friends Discord](http://discord.gg/AjTPFpN) (use the #gui channel) to get help, discuss improvements, or simply show your appreciation.
+* You can join the [Computer Go Community Discord (formerly Leela Zero & Friends)](http://discord.gg/AjTPFpN) (use the #gui channel) to get help, discuss improvements, or simply show your appreciation. Please do not use github issues to ask for technical help, this is only for bugs, suggestions and discussing contributions.
 
 
 
